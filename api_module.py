@@ -46,6 +46,7 @@ class Api:
         else:
             self.runtime = 1
 
+
     def api_test_handinput(self):
         if self.method == "GET":
             for run in range(int(self.runtime)):
@@ -58,9 +59,17 @@ class Api:
                 print(r.status_code, r.text)
 
     
-    @classmethod
-    def api_test_json(param):
-        pass
+    @staticmethod
+    def api_test_json(Url, Method, Header, Data, Json, Param, File, Runtime):
+        if Method == 'GET':
+            for n in range(int(Runtime)):
+                r = requests.post(Url, data= Data, files=File, headers=Header, json=Json, params=Param)
+                print(r.status_code, r.text)
+
+        elif Method == "POST":
+            for n in range(int(Runtime)):
+                r = requests.post(Url, data= Data, files=File, headers=Header, json=Json, params=Param)
+                print(r.status_code, r.text)
 
 
 
@@ -97,17 +106,8 @@ def main(*params):
             File = data.get("File")
             Runtime = data.get('Runtime')
             # -------------------------- #
-            if Method == 'GET':
-                for n in range(int(Runtime)):
-                    r = requests.post(Url, data= Data, files=File, headers= Header, json=Json, params=Param)
-                    print(r.status_code, r.text)
 
-            elif Method == "POST":
-                for n in range(int(Runtime)):
-                    r = requests.post(Url, data= Data, files=File, headers= Header, json=Json, params=Param)
-                    print(r.status_code, r.text)
-            
-        # Api.api_test_json()
+            Api.api_test_json(Url, Method, Header, Data, Json, Param, File, Runtime)
 
 if __name__ == '__main__': 
     main()
