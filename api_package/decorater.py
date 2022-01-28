@@ -63,10 +63,6 @@ def runtime_check(program, coder):
                     except Exception as e:
                         print(e)
                         print('參數格式錯誤 Ex: {"Key": "Value"}')
-                
-                if not params:
-                    params = ''
-
                 files = input("files參數: ")
                 runtime = input("請輸入要執行次數: ")
                 print('*' * 8)
