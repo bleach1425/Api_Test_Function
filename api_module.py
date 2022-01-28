@@ -56,7 +56,7 @@ class Api:
                 print(r.status_code, r.text)
 
         elif self.method == "POST":
-            for run in range(self.runtime):
+            for run in range(int(self.runtime)):
                 r = requests.post(self.url, data= self.data, files=self.file, headers= self.header, json=self.json, params=self.param)
                 print(r.status_code, r.text)
 
