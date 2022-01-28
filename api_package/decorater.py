@@ -46,24 +46,27 @@ def runtime_check(program, coder):
                     header = input("header參數: ")    
                     data = input("data參數: ")
                     json = input("json參數: ")
-                    params = input("params參數: ")
                     try:
                         check = lambda x: '{"default":"value"}' if ( x is '') else x
                         header = check(header)
                         data = check(data)
                         json = check(json)
-                        params = check(params)
+                        # params = check(params)
                         
                         header = eval(header)
                         data = eval(data)
                         json = eval(json)
-                        params = eval(params)
+                        # params = eval(params)
                         
                         break
                     except Exception as e:
                         print(e)
                         print('參數格式錯誤 Ex: {"Key": "Value"}')
                 
+                params = input("params參數: ")
+                if not params:
+                    params = ''
+
                 files = input("files參數: ")
                 runtime = input("請輸入要執行次數: ")
                 print('*' * 8)

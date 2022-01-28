@@ -1,5 +1,7 @@
 import requests
 import json
+import os
+import json
 from api_package.decorater import runtime_check
 
 
@@ -61,9 +63,10 @@ class Api:
     
     @staticmethod
     def api_test_json(Url, Method, Header, Data, Json, Param, File, Runtime):
-        if Method == 'GET':
+        print("Method", Method)
+        if Method == "GET":
             for n in range(int(Runtime)):
-                r = requests.post(Url, data= Data, files=File, headers=Header, json=Json, params=Param)
+                r = requests.get(Url, data= Data, files=File, headers=Header, json=Json, params=Param)
                 print(r.status_code, r.text)
 
         elif Method == "POST":
@@ -71,6 +74,20 @@ class Api:
                 r = requests.post(Url, data= Data, files=File, headers=Header, json=Json, params=Param)
                 print(r.status_code, r.text)
 
+
+def mkdir_example():
+    with open('./api_test.json', mode='w') as f:
+        data = {
+            "Url":"",
+            "Method": "",
+            "Header": {},
+            "Json": {},
+            "Param": {},
+            "Data": {},
+            "Runtime": 1
+        }
+        json.dump(data, f)
+        f.close()
 
 
 @runtime_check(program='Api測試', coder='John')
@@ -96,6 +113,7 @@ def main(*params):
             7. = runtime
             '''
             data = json.load(f)
+            print("data: ", data)
             # -------------------------- #
             Url = data.get('Url')
             Method = data.get('Method')
