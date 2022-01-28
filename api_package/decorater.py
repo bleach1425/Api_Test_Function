@@ -42,22 +42,27 @@ def runtime_check(program, coder):
                     else:
                         print('您輸入的值為空請在試一次')
                 
-                header = input("header參數: ")
-                data = input("data參數: ")
-                json = input("json參數: ")
-                params = input("params參數: ")
-
-                if data: 
+                while True:
+                    header = input("header參數: ")    
+                    data = input("data參數: ")
+                    json = input("json參數: ")
+                    params = input("params參數: ")
                     try:
+                        check = lambda x: '{"default":"value"}' if ( x is '') else x
+                        header = check(header)
+                        data = check(data)
+                        json = check(json)
+                        params = check(params)
+                        
+                        header = eval(header)
                         data = eval(data)
                         json = eval(json)
                         params = eval(params)
-                    except:
-                        raise ValueError("參數格式錯誤(Ex: {'Test': 'Item'})")
-                else:
-                    data = {"data": "default"}
-                    json = {"json": "default"}
-                    params = ''
+                        
+                        break
+                    except Exception as e:
+                        print(e)
+                        print('參數格式錯誤 Ex: {"Key": "Value"}')
                 
                 files = input("files參數: ")
                 runtime = input("請輸入要執行次數: ")
@@ -81,6 +86,5 @@ def runtime_check(program, coder):
                 print('*'*8)
                 print(f"{program}: 用時 {round(end - start, 2)} 秒")
                 return "OK"
-
         return inner_wrapper
     return wrapper
