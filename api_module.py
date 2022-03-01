@@ -108,9 +108,9 @@ def main(*params):
             2. GET or POST  //required//
             3. [send value(data)]
             4. [send value(json)]
-            5. = [send params]
-            6. = file  
-            7. = runtime
+            5. [send params]
+            6. file  
+            7. runtime
             '''
             data = json.load(f)
             print("data: ", data)
