@@ -53,26 +53,39 @@ class Api:
         if self.method == "GET":
             for run in range(int(self.runtime)):
                 r = requests.get(self.url, data= self.data, files=self.file, headers= self.header, json=self.json, params=self.param)
+                print("Runtime:", run + 1)
                 print(r.status_code, r.text)
+                print("Response Code: ",  r.status_code)
+                print("Response Text: ",  r.text)
 
         elif self.method == "POST":
             for run in range(int(self.runtime)):
                 r = requests.post(self.url, data= self.data, files=self.file, headers= self.header, json=self.json, params=self.param)
-                print(r.status_code, r.text)
+                print("Runtime:", run + 1)
+                print("Response Code: ",  r.status_code)
+                print("Response Text: ",  r.text)
 
     
     @staticmethod
     def api_test_json(Url, Method, Header, Data, Json, Param, File, Runtime):
-        print("Method", Method)
+        print("Method: ", Method)
+        print("")
         if Method == "GET":
-            for n in range(int(Runtime)):
+            for run in range(int(Runtime)):
+                print("Runtime:", run + 1)
                 r = requests.get(Url, data= Data, files=File, headers=Header, json=Json, params=Param)
                 print(r.status_code, r.text)
+                print("Response Code: ",  r.status_code)
+                print("Response Text: ",  r.text)
+                print("")
 
         elif Method == "POST":
-            for n in range(int(Runtime)):
+            for run in range(int(Runtime)):
+                print("Runtime:", run + 1)
                 r = requests.post(Url, data= Data, files=File, headers=Header, json=Json, params=Param)
-                print(r.status_code, r.text)
+                print("Response Code: ",  r.status_code)
+                print("Response Text: ",  r.text)
+                print("")
 
 
 def mkdir_example():

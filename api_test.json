@@ -1,9 +1,9 @@
 {
     "Url":"https://fastapimongo.herokuapp.com/db/search_account",
-    "Method": "GET",
+    "Method": "POST",
     "Header": {},
     "Json": {},
     "Param": {"token": "", "name": "Perice"},
     "Data": {},
-    "Runtime": 1
+    "Runtime": 2
 }
